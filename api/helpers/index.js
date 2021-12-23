@@ -15,7 +15,7 @@ import {
   HttpClient,
   logger
 } from './expressUtils'
-import ResourceRouter from './ResourceRouter'
+import configureRouter from './configureRouter'
 
 export {
   ResponseBody,
@@ -31,5 +31,5 @@ export {
   CustomError,
   HttpClient,
   logger,
-  ResourceRouter
+  configureRouter
 }

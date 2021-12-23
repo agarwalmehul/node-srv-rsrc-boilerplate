@@ -1,11 +1,14 @@
 'use strict'
 
 import { HealthRouter } from '../resources/Health'
+import { expressUtils } from '../helpers'
 
-const routeConfig = {
-  get: { enabled: true }
+const config = {
+  routesConfig: {
+    get: { enabled: true }
+  }
 }
 
-const healthRouter = new HealthRouter(routeConfig)
+const healthRouter = new HealthRouter(expressUtils, config)
 
 export default healthRouter

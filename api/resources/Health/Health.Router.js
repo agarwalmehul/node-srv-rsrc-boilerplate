@@ -1,44 +1,45 @@
 'use strict'
 
-import { Router } from 'express'
-import { expressUtils, ResourceRouter } from '../../helpers'
+import Express from 'express'
+import { configureRouter } from '../../helpers'
 import HealthController from './Health.Controller'
 
 const { get } = HealthController
 
-const { reqHandler, resHandler, authenticator, crypto } = expressUtils
-const { extractHeaders, routeSanity, asyncWrapper } = reqHandler
-const { setHeaders } = resHandler
-const { validateToken, validateApiKey } = authenticator
-const { encryptPayload, decryptPayload } = crypto
+class HealthRouter {
+  constructor (expressUtils, customConfig) {
+    const { reqHandler, resHandler, authenticator, crypto } = expressUtils
+    const { extractHeaders, routeSanity, asyncWrapper } = reqHandler
+    const { setHeaders } = resHandler
+    const { validateToken, validateApiKey } = authenticator
+    const { encryptPayload, decryptPayload } = crypto
 
-const masterConfig = {
-  preMiddlewares: [
-    extractHeaders,
-    validateApiKey,
-    validateToken,
-    decryptPayload
-  ],
+    const masterConfig = {
+      preMiddlewares: [
+        extractHeaders,
+        validateApiKey,
+        validateToken,
+        decryptPayload
+      ],
 
-  postMiddlewares: [
-    encryptPayload,
-    setHeaders
-  ],
+      postMiddlewares: [
+        encryptPayload,
+        setHeaders
+      ],
 
-  routesConfig: {
-    get: {
-      method: 'get',
-      path: '/',
-      pipeline: [routeSanity, asyncWrapper(get)]
+      routesConfig: {
+        get: {
+          method: 'get',
+          path: '/',
+          pipeline: [routeSanity, asyncWrapper(get)]
+        }
+      }
     }
-  }
-}
 
-class HealthRouter extends ResourceRouter {
-  constructor (routeConfig) {
-    const resourceRouter = new Router()
-    const healthRouter = super(resourceRouter, masterConfig, routeConfig)
-    return healthRouter
+    const Router = new Express.Router()
+
+    const resourceRouter = configureRouter(Router, masterConfig, customConfig)
+    return resourceRouter
   }
 }
 

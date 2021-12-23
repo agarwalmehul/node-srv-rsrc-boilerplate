@@ -1,11 +1,14 @@
 'use strict'
 
 import { VersionRouter } from '../resources/Version'
+import { expressUtils } from '../helpers'
 
-const routeConfig = {
-  get: { enabled: true }
+const config = {
+  routesConfig: {
+    get: { enabled: true }
+  }
 }
 
-const versionRouter = new VersionRouter(routeConfig)
+const versionRouter = new VersionRouter(expressUtils, config)
 
 export default versionRouter
