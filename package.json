@@ -1,0 +1,28 @@
+{
+  "name": "node-srv-rsrc-boilerplate",
+  "version": "1.0.0",
+  "description": "Node API Server - Resource Architecture - Boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "ip": "rm -rf node_modules && npm install",
+    "start": "nodemon server.js"
+  },
+  "author": "Mehul Agarwal <agarwalmehul92@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/agarwalmehul/node-srv-rsrc-boilerplate.git",
+  "dependencies": {
+    "@m92/express-utils": "0.0.93",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/register": "^7.16.0",
+    "nodemon": "^2.0.15"
+  }
+}
