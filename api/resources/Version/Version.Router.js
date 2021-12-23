@@ -16,14 +16,14 @@ class VersionRouter {
 
     const masterConfig = {
       preMiddlewares: [
-        extractHeaders,
-        validateApiKey,
-        validateToken,
-        decryptPayload
+        extractHeaders
+        // validateApiKey,
+        // validateToken,
+        // decryptPayload
       ],
 
       postMiddlewares: [
-        encryptPayload,
+        // encryptPayload,
         setHeaders
       ],
 
