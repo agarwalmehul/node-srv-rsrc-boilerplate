@@ -15,6 +15,7 @@ import {
 } from '@m92/express-utils'
 
 const expressUtils = new ExpressUtils(EXPS_CONFIG)
+global.expressUtils = expressUtils
 const { CustomError, HttpClient, logger } = expressUtils
 
 export {

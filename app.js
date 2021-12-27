@@ -4,11 +4,11 @@ import Express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
+
+import { expressUtils } from './api/helpers'
 import Routes from './api/routes'
 import { SERVER_CONFIG } from './config'
 import startServer from './startServer'
-
-import { expressUtils } from './api/helpers'
 
 const { BODY_LIMIT, CORS_OPTIONS } = SERVER_CONFIG
 const app = new Express()

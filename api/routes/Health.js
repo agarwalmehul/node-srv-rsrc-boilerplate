@@ -1,7 +1,7 @@
 'use strict'
 
+import Express from 'express'
 import { HealthRouter } from '../resources/Health'
-import { expressUtils } from '../helpers'
 
 const config = {
   routesConfig: {
@@ -9,6 +9,7 @@ const config = {
   }
 }
 
-const healthRouter = new HealthRouter(expressUtils, config)
+const Router = new Express.Router()
+const healthRouter = new HealthRouter(Router, config)
 
 export default healthRouter

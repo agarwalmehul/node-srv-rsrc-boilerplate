@@ -1,7 +1,7 @@
 'use strict'
 
+import Express from 'express'
 import { VersionRouter } from '../resources/Version'
-import { expressUtils } from '../helpers'
 
 const config = {
   routesConfig: {
@@ -9,6 +9,7 @@ const config = {
   }
 }
 
-const versionRouter = new VersionRouter(expressUtils, config)
+const Router = new Express.Router()
+const versionRouter = new VersionRouter(Router, config)
 
 export default versionRouter
